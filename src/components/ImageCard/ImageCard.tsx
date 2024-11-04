@@ -1,13 +1,5 @@
 import style from "../ImageCard/ImageCard.module.css";
-
-type Image = {
-  url: string;
-  urls: {
-    small: string;
-    full: string;
-  };
-  alt_description?: string;
-};
+import { Image } from "../App/App";
 
 type ImageCardProps = {
   images: Image;

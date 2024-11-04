@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchImages } from "../../../services/api";
+import { fetchImages } from "../services/api";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
@@ -9,7 +9,7 @@ import ImageModal from "../ImageModal/ImageModal";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
-type Image = {
+export type Image = {
   id: string;
   url: string;
   urls: {
@@ -17,9 +17,9 @@ type Image = {
     full: string;
   };
   alt_description?: string;
-}
+};
 
-type AppProps = {}
+type AppProps = {};
 
 const App: React.FC<AppProps> = () => {
   const [images, setImages] = useState<Image[]>([]);
@@ -30,25 +30,25 @@ const App: React.FC<AppProps> = () => {
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>("");
 
- useEffect(() => {
-   const getImages = async () => {
-     try {
-       setIsError(false);
-       setIsLoading(true);
-       const data = await fetchImages(page, query);
-       setIsLoading(false);
-       setImages((prev) => [...prev, ...data]);
-     } catch {
-       setIsError(true);
-     } finally {
-       setIsLoading(false);
-     }
-   };
+  useEffect(() => {
+    const getImages = async () => {
+      try {
+        setIsError(false);
+        setIsLoading(true);
+        const data: Image[] = await fetchImages(page, query);
+        setIsLoading(false);
+        setImages((prev) => [...prev, ...data]);
+      } catch {
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-   if (query) {
-     getImages();
-   }
- }, [page, query]);
+    if (query) {
+      getImages();
+    }
+  }, [page, query]);
 
   useEffect(() => {
     if (imageModal) {
