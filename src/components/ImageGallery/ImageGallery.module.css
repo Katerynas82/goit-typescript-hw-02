@@ -1,0 +1,44 @@
+
+.imageWrapper {
+   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; 
+  padding: 20px; 
+  list-style-type: none; 
+  margin: 0; 
+  background-color: #f0f0f0; 
+  border-radius: 10px; 
+  margin-top: 65px;
+}
+
+.img {
+  list-style-type: none; 
+  display: block;
+  transition: transform 0.3s ease; 
+  max-width: 300px; 
+  overflow: hidden;
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   object-fit: cover;
+}
+
+
+.img img {
+  width: 100%; 
+  height: auto; 
+  border-radius: 8px;
+}
+
+
+.img:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+
+.img a {
+  text-decoration: none; 
+  color: inherit;
+}
+
